@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume-wordpress
+spec:
+  storageClassName: manual
+  accessModes:
+     - ReadWriteOnce
+  capacity:
+    storage: 3Gi
+  hostPath:
+    path: "/opt/netdev/wordpress"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-wordpress
+spec:
+  storageClassName: manual
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
